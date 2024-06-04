@@ -32,8 +32,7 @@ pipeline {
   post {
     always {
       echo 'I will always say Hello again!'
-      publishHTML(alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'coverage', reportFiles: 'lcov-report/index.html', reportName: 'NYC HTML Report')
-    }
+publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'coverage/lcov-report', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])    }
 
   }
 }
