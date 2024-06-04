@@ -10,12 +10,7 @@ pipeline {
     stage('Unit Testing') {
       steps {
         sh 'npm test'
-        publishHTML(alwaysLinkToLastBuild: true, 
-                    keepAll: true, 
-                    reportDir: 'mochawesome-report', 
-                    reportFiles: 'mochawesome.html', 
-                    reportName: 'Mocha Awesome HTML Report'
-                  )
+        publishHTML(alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'mochawesome-report', reportFiles: 'mochawesome.html', reportName: 'Mocha Awesome HTML Report')
       }
     }
 
@@ -23,15 +18,9 @@ pipeline {
       steps {
         catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE', message: 'okat') {
           sh 'npm run coverage'
-          publishHTML(alwaysLinkToLastBuild: true, 
-            keepAll: true, 
-            reportDir: 'coverage', 
-            reportFiles: 'lcov-report/index.html', 
-            reportName: 'NYC HTML Report'
-          )
+          publishHTML(alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'coverage', reportFiles: 'lcov-report/index.html', reportName: 'NYC HTML Report')
         }
-        
-      
+
       }
     }
 
