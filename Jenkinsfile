@@ -26,7 +26,7 @@ pipeline {
 
   stage('Docker Build and Test') {
       steps {
-        sh 'docker build -t siddharth67/numeric-app:""$GIT_COMMIT"" .'
+        sh 'docker build -t siddharth67/numeric-app:""$GIT_COMMIT"" . '
       }
     }
 
