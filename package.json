@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node app.js",
-    "test": "mocha app-test.js --timeout 10000 --reporter mocha-junit-reporter --exit",
+    "test": "mocha --reporter mocha-junit-reporter --reporter-options output=test-results.xml  --reporter=mochawesome app-test.js -timeout 10000  --exit",
     "coverage": "nyc --reporter cobertura --reporter lcov --reporter text --reporter json-summary  mocha app-test.js --timeout 10000  --exit"
   },
   "nyc": {
@@ -17,12 +17,14 @@
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "mocha-junit-reporter": "^2.2.1",
+    "mochawesome": "^7.1.3",
     "mongoose": "5.13.20",
     "nyc": "^15.1.0"
   },
   "devDependencies": {
     "chai": "*",
     "chai-http": "*",
-    "mocha": "*"
+    "mocha": "*",
+    "mocha-multi": "^1.1.7"
   }
 }
