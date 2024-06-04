@@ -10,7 +10,7 @@ pipeline {
     stage('Unit Testing') {
       steps {
         sh 'npm test'
-        publishHTML(target: 'mochawesome-report\\mochawesome.html')
+        publishHTML(target: 'mochawesome-report/mochawesome.html')
       }
     }
 
@@ -20,7 +20,7 @@ pipeline {
           sh 'npm run coverage'
         }
 
-        publishHTML(target: 'coverage\\lcov-report\\index.html')
+        publishHTML(target: 'coverage/lcov-report/index.html')
       }
     }
 
