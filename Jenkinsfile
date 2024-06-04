@@ -10,7 +10,7 @@ pipeline {
     stage('Unit Testing') {
       steps {
         sh 'npm test'
-        junit(testResults: 'test-results.xml', checksName: 'ChecksName', keepProperties: true, keepLongStdio: true)
+        publishHTML(target: 'mochawesome-report\\mochawesome.html')
       }
     }
 
@@ -20,6 +20,7 @@ pipeline {
           sh 'npm run coverage'
         }
 
+        publishHTML(target: 'coverage\\lcov-report\\index.html')
       }
     }
 
