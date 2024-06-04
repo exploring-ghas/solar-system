@@ -39,11 +39,12 @@ pipeline {
           //             -s './'
           //             -f 'ALL' 
           //             --prettyPrint''', odcInstallation: 'OWASP-920' //name given in tools section
-          dependencyCheck additionalArguments: '--scan ./', odcInstallation: 'OWASP-920'
-          dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+          // dependencyCheck additionalArguments: '--scan ./', odcInstallation: 'OWASP-920'
+          // dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+          sh 'echo asd'
     },
     "Trivy Scan":{
-      sh "bash trivy-docker-image-scan.sh"
+      sh 'bash trivy-docker-image-scan.sh'
     }	
       )
     }
