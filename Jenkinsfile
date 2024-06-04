@@ -24,6 +24,12 @@ printenv'''
       }
     }
 
+  stage('Docker Build and Test') {
+      steps {
+        sh 'sudo docker build -t siddharth67/numeric-app:""$GIT_COMMIT"" .'
+      }
+    }
+
   }
   environment {
     MONGO_URI = 'mongodb+srv://supercluster.d83jj.mongodb.net/superData'
