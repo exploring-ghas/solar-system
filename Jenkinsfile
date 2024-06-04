@@ -23,13 +23,14 @@ pipeline {
       steps {
         catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE', message: 'okat') {
           sh 'npm run coverage'
-        }
-        publishHTML(alwaysLinkToLastBuild: true, 
+          publishHTML(alwaysLinkToLastBuild: true, 
             keepAll: true, 
             reportDir: 'coverage\lcov-report', 
             reportFiles: 'index.html', 
             reportName: 'NYC HTML Report'
                   )
+        }
+        
       }
       }
     }
