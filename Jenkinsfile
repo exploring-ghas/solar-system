@@ -10,7 +10,7 @@ pipeline {
     stage('Unit Testing') {
       steps {
         sh 'npm test'
-        publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'mochawesome-report', reportFiles: 'mochawesome.html', reportName: 'Mocha Awesome HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+        publishHTML(alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'mochawesome-report', reportFiles: 'mochawesome.html', reportName: 'Mocha Awesome HTML Report', useWrapperFileDirectly: true)
       }
     }
 
@@ -20,7 +20,7 @@ pipeline {
           sh 'npm run coverage'
         }
 
-        publishHTML(target: 'coverage/lcov-report/index.html')
+        publishHTML(target: '/coverage/lcov-report/index.html')
       }
     }
 
