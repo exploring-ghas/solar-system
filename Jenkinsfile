@@ -10,6 +10,7 @@ pipeline {
     stage('Unit Testing') {
       steps {
         sh 'npm test'
+        junit 'test-result.xml'
       }
     }
 
@@ -32,7 +33,8 @@ pipeline {
   post {
     always {
       echo 'I will always say Hello again!'
-publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'coverage/lcov-report', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])    }
+      publishHTML(allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'coverage/lcov-report', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true)
+    }
 
   }
 }
