@@ -10,7 +10,7 @@ pipeline {
     stage('Unit Testing') {
       steps {
         sh 'npm test'
-        junit 'test-result.xml'
+        junit 'test-results.xml'
       }
     }
 
