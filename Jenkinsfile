@@ -10,12 +10,14 @@ pipeline {
     stage('Unit Testing') {
       steps {
         sh 'npm test'
+        junit(testResults: 'test-results.xml', checksName: 'ChecksName', keepProperties: true, keepLongStdio: true)
       }
     }
 
     stage('Code Coverage') {
       steps {
         sh 'npm run coverage'
+        warnError(message: 'errr')
       }
     }
 
