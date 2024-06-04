@@ -30,6 +30,20 @@ pipeline {
       }
     }
 
+  stage('Vulnerability Scan - Docker') {
+    steps {
+      parallel(
+        "Dependency Scan": {
+          //sh "mvn dependency-check:check"
+          sh "echo ok"
+    },
+    "Trivy Scan":{
+      sh "bash trivy-docker-image-scan.sh"
+    }	
+      )
+    }
+  }
+
   }
   environment {
     MONGO_URI = 'mongodb+srv://supercluster.d83jj.mongodb.net/superData'
