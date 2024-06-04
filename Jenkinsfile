@@ -20,4 +20,9 @@ pipeline {
     }
 
   }
+  environment {
+    MONGO_URI = 'mongodb+srv://supercluster.d83jj.mongodb.net/superData'
+    MONGO_USERNAME = 'superuser'
+    MONGO_PASSWORD = 'SuperPassword'
+  }
 }
