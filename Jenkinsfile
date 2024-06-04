@@ -10,7 +10,7 @@ pipeline {
     stage('Unit Testing') {
       steps {
         sh 'npm test'
-        publishHTML(target: 'mochawesome-report/mochawesome.html')
+        publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'mochawesome-report', reportFiles: 'mochawesome.html', reportName: 'Mocha Awesome HTML Report', reportTitles: '', useWrapperFileDirectly: true])
       }
     }
 
