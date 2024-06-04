@@ -16,4 +16,4 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:0.52.
         exit 1;
     else
         echo "Image scanning passed. No CRITICAL vulnerabilities found"
-    fi;
+    fi; 
