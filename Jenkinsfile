@@ -35,7 +35,7 @@ pipeline {
       parallel(
         "Dependency Scan": {
           //sh "mvn dependency-check:check"
-          sh "echo ok"
+          sh "echo ok1"
     },
     "Trivy Scan":{
       sh "bash trivy-docker-image-scan.sh"
