@@ -27,6 +27,8 @@ printenv'''
   }
   environment {
     MONGO_URI = 'mongodb+srv://supercluster.d83jj.mongodb.net/superData'
+        MONGO_USERNAME = credentials('MONGO_USERNAME')
+    MONGO_PASSWORD = credentials('MONGO_PASSWORD')
     a = 'a'
   }
   post {
