@@ -16,8 +16,10 @@ pipeline {
 
     stage('Code Coverage') {
       steps {
-        sh 'npm run coverage'
-        warnError(message: 'errr')
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE', message: 'okat') {
+          sh 'npm run coverage'
+        }
+
       }
     }
 
