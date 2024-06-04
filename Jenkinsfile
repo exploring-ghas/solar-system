@@ -34,13 +34,13 @@ pipeline {
     steps {
       parallel(
         "Dependency Scan": {
-          sh "dependencyCheck additionalArguments: ''' 
-                      -o './'
-                      -s './'
-                      -f 'ALL' 
-                      --prettyPrint''', odcInstallation: 'OWASP-920' //name given in tools section
-          
-          dependencyCheckPublisher pattern: 'dependency-check-report.xml'"
+          // sh "dependencyCheck additionalArguments: ''' 
+          //             -o './'
+          //             -s './'
+          //             -f 'ALL' 
+          //             --prettyPrint''', odcInstallation: 'OWASP-920' //name given in tools section
+          dependencyCheck additionalArguments: '--scan ./', odcInstallation: 'OWASP-920'
+          dependencyCheckPublisher pattern: 'dependency-check-report.xml'
     },
     "Trivy Scan":{
       sh "bash trivy-docker-image-scan.sh"
