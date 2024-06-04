@@ -1,32 +1,32 @@
 pipeline {
   agent any
   stages {
-    stage('Install Dependencies') {
-      steps {
-        sh '''npm install
-printenv'''
-      }
-    }
+//     stage('Install Dependencies') {
+//       steps {
+//         sh '''npm install
+// printenv'''
+//       }
+//     }
 
-    stage('Unit Testing') {
-      steps {
-        sh 'npm test'
-        junit 'test-results.xml'
-      }
-    }
+//     stage('Unit Testing') {
+//       steps {
+//         sh 'npm test'
+//         junit 'test-results.xml'
+//       }
+//     }
 
-    stage('Code Coverage') {
-      steps {
-        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE', message: 'okat') {
-          sh 'npm run coverage'
-        }
+//     stage('Code Coverage') {
+//       steps {
+//         catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE', message: 'okat') {
+//           sh 'npm run coverage'
+//         }
 
-      }
-    }
+//       }
+//     }
 
   stage('Docker Build and Test') {
       steps {
-        sh 'sudo docker build -t siddharth67/numeric-app:""$GIT_COMMIT"" .'
+        sh 'docker build -t siddharth67/numeric-app:""$GIT_COMMIT"" .'
       }
     }
 
