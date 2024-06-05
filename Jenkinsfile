@@ -50,18 +50,19 @@ pipeline {
   //   }
   // }
 
-  }
-  environment {
-    MONGO_URI = 'mongodb+srv://supercluster.d83jj.mongodb.net/superData'
-    MONGO_USERNAME = credentials('MONGO_USERNAME')
-    MONGO_PASSWORD = credentials('MONGO_PASSWORD')
-    a = 'abc12123222'
-  }
-  post {
+  }  post {
     always {
       echo 'I will always say Hello again!'
       publishHTML(allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'coverage/lcov-report', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true)
     }
 
   }
+  
+  environment {
+    MONGO_URI = 'mongodb+srv://supercluster.d83jj.mongodb.net/superData'
+    MONGO_USERNAME = credentials('MONGO_USERNAME')
+    MONGO_PASSWORD = credentials('MONGO_PASSWORD')
+    a = 'abc12123222'
+  }
+
 }
