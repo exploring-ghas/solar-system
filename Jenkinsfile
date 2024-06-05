@@ -7,13 +7,13 @@ pipeline {
         checkout scm
       }
     }
-    
+
     stage('Install Dependencies') {
       steps {
         sh 'npm install' 
       } 
-    }
-//
+    } 
+// 
 
 //     stage('Unit Testing') {
 //       steps {
