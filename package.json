@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node app.js",
     "test": "mocha --reporter mocha-junit-reporter --reporter-options output=test-results.xml  app-test.js -timeout 10000  --exit",
-    "coverage": "nyc --reporter cobertura --reporter lcov --reporter text --reporter json-summary  mocha app-test.js --timeout 10000  --exit"
+    "coverage": "nyc --reporter cobertura --reporter lcov --reporter text --reporter json-summary  mocha app-test.js --timeout 10000  --exit",
+    "preinstall": "npx npm-force-resolutions"
   },
   "nyc": {
     "check-coverage": true,
@@ -25,5 +26,8 @@
     "chai-http": "*",
     "mocha": "*",
     "mocha-multi": "^1.1.7"
+  },  
+  "resolutions": {
+    "@babel/traverse": "7.23.2"
   }
 }
