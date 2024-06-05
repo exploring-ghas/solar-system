@@ -35,11 +35,11 @@ pipeline {
     steps {
       parallel(
         "Dependency Scan": {
-          sh "dependencyCheck additionalArguments: ''' 
+          dependencyCheck additionalArguments: 
                       -o './'
                       -s './'
                       -f 'ALL' 
-                      --prettyPrint''', odcInstallation: 'OWASP-920' //name given in tools section
+                      --prettyPrint, odcInstallation: 'OWASP-920' //name given in tools section
           dependencyCheck additionalArguments: '--scan ./', odcInstallation: 'OWASP-920'
           dependencyCheckPublisher pattern: 'dependency-check-report.xml'
     },
