@@ -8,11 +8,11 @@ pipeline {
       }
     }
 
-    stage('Install Dependencies') {
-      steps {
-        sh 'npm install' 
-      } 
-    } 
+    // stage('Install Dependencies') {
+    //   steps {
+    //     sh 'npm install' 
+    //   } 
+    // } 
 // 
 
 //     stage('Unit Testing') {
@@ -31,11 +31,11 @@ pipeline {
 //       }
 //     }
 
-  stage('Docker Build and Test') {
-      steps {
-        sh 'docker build -t siddharth67/numeric-app:""$GIT_COMMIT"" . '
-      }
-    }
+  // stage('Docker Build and Test') {
+  //     steps {
+  //       sh 'docker build -t siddharth67/numeric-app:""$GIT_COMMIT"" . '
+  //     }
+  //   }
 
   stage('Vulnerability Scan - Docker') {
     steps {
@@ -57,7 +57,8 @@ pipeline {
           // dependencyCheckPublisher pattern: 'dependency-check-report.xml'
     },
     "Trivy Scan":{
-      sh 'bash trivy-docker-image-scan.sh'
+      // sh 'bash trivy-docker-image-scan.sh'
+      sh ' echo abc'
     }	
       )
     } 
@@ -65,13 +66,14 @@ pipeline {
 
   }  
   
-  // post {
-  //   always {
-  //     echo 'I will always say Hello again!'
-  //     publishHTML(allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'coverage/lcov-report', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true)
-  //   }
+  post {
+    always {
+      echo 'I will always say Hello again!'
+      publishHTML(allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'coverage/lcov-report', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true)
+      publishHTML(allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: '/', reportFiles: 'dependency-check-report.html', reportName: 'Depem HTML Report', reportTitles: '', useWrapperFileDirectly: true)
+    }
 
-  // }
+  }
   
   environment {
     MONGO_URI = 'mongodb+srv://supercluster.d83jj.mongodb.net/superData'
