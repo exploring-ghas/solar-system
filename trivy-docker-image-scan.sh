@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dockerImageName='siddharth67/numeric-app:$GIT_COMMIT'
+dockerImageName="siddharth67/numeric-app:$GIT_COMMIT"
 echo $dockerImageName
 
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:0.52.0 -q image --exit-code 0 --severity HIGH --light $dockerImageName
