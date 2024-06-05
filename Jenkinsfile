@@ -1,12 +1,11 @@
 pipeline {
   agent any
   stages {
-//     stage('Install Dependencies') {
-//       steps {
-//         sh '''npm install
-// printenv'''
-//       }
-//     }
+    stage('Install Dependencies') {
+      steps {
+        sh 'npm install'
+      }
+    }
 //
 
 //     stage('Unit Testing') {
